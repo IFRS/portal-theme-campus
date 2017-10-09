@@ -1,0 +1,32 @@
+header {
+    background-color: $cor-primaria-verde;
+    @include gradient-vertical($cor-header-inicio, $cor-header-fim);
+
+    a {
+        color: $cor-secundaria-branco;
+
+        &:hover {
+            color: $cor-secundaria-branco;
+        }
+    }
+
+    .title-ifrs {
+        color: #FFFFFF;
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+
+    .title-campus {
+        color: #FFFFFF;
+        font-size: 40px;
+        font-weight: bolder;
+        margin-bottom: 17px;
+    }
+
+    .title-mec {
+        color: #FFFFFF;
+        font-size: 14px;
+        margin-bottom: 0;
+        text-transform: uppercase;
+    }
+}
