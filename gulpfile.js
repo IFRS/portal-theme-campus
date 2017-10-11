@@ -12,6 +12,8 @@ var imagemin     = require('gulp-imagemin');
 var runSequence  = require('run-sequence');
 var browserSync  = require('browser-sync').create();
 
+require('dotenv').config();
+
 var dist = [
     '**',
     '!.**',
@@ -30,8 +32,8 @@ gulp.task('default', function() {
         notify: false,
         online: false,
         open: false,
-        host: 'portal.dev',
-        proxy: 'portal.dev',
+        host: process.env.BROWSERSYNC_URL,
+        proxy: process.env.BROWSERSYNC_URL,
     });
 
     gulp.watch('sass/**/*.scss', ['sass']);
