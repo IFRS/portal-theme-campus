@@ -1,0 +1,12 @@
+#menu-campi {
+    background-color: $cor-primaria-cinza;
+
+    @media screen and (min-width: $screen-md-min) {
+        &:after {
+            content: none;
+            border: none;
+            display: inherit;
+            margin-top: 0;
+        }
+    }
+}
