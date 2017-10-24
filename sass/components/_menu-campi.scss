@@ -10,4 +10,8 @@
             margin-top: 0;
         }
     }
+
+    @media screen and (max-width: $screen-md-min) {
+        margin-top: 0;
+    }
 }
