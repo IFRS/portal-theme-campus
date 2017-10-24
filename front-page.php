@@ -53,11 +53,11 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-12 col-md-7">
+    <div class="col-xs-12 col-md-6">
         <?php get_template_part('partials/editais/latest'); ?>
         <?php get_template_part('partials/documentos/latest'); ?>
     </div>
-    <div class="col-xs-12 col-md-5">
+    <div class="col-xs-12 col-md-6">
         <?php if (!dynamic_sidebar('widget-home-side')) : endif; ?>
     </div>
 </div>
