@@ -10,37 +10,42 @@
 ?>
 
 <div class="row">
+    <div class="col-xs-12">
     <?php while ($query->have_posts() && $query->current_post < 2) : $query->the_post(); ?>
         <?php if ($query->current_post == 0) : ?>
-            <!-- Notícia Destaque -->
-            <div class="col-xs-12 col-md-9">
-                <article class="noticia noticia-destaque">
-                      <?php get_template_part('partials/noticias/item-front-page'); ?>
-                </article>
-            </div>
-
+            <div class="row">
+                <!-- Notícia Destaque -->
+                <div class="col-xs-12 col-md-9">
+                    <article class="noticia noticia-destaque">
+                          <?php get_template_part('partials/noticias/item-front-page'); ?>
+                    </article>
+                </div>
         <?php endif; ?>
         <?php if ($query->current_post == 1) : ?>
-            <!-- Notícia Normal -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <article class="noticia">
-                    <?php get_template_part('partials/noticias/item-front-page'); ?>
-                </article>
-            </div>
-            <!-- Banners -->
-            <div class="col-xs-12 col-md-9">
-                <?php if (!dynamic_sidebar('widget-home')) : endif; ?>
-            </div>
+                <!-- Notícia Normal -->
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <article class="noticia">
+                        <?php get_template_part('partials/noticias/item-front-page'); ?>
+                    </article>
+                </div>
+            </div> <!-- /.row -->
         <?php endif; ?>
         <?php if ($query->current_post == 2) : ?>
-            <!-- Notícia Normal -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <article class="noticia">
-                    <?php get_template_part('partials/noticias/item-front-page'); ?>
-                </article>
+            <div class="row">
+                <!-- Notícia Normal -->
+                <div class="col-xs-12 col-sm-6 col-md-3 col-md-push-9">
+                    <article class="noticia">
+                        <?php get_template_part('partials/noticias/item-front-page'); ?>
+                    </article>
+                </div>
+                <!-- Banners -->
+                <div class="col-xs-12 col-md-9 col-md-pull-3">
+                    <?php if (!dynamic_sidebar('widget-home')) : endif; ?>
+                </div>
             </div>
         <?php endif; ?>
     <?php endwhile; ?>
+    </div>
 </div>
 
 <hr class="separador-noticia"/>
