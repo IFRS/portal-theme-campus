@@ -62,11 +62,16 @@
     </div>
 </div>
 
-<?php
-    if (is_front_page()) {
-        get_template_part('partials/menus/campi');
-    }
-?>
+<div class="row">
+    <div class="col-xs-12">
+        <h2><img class="img-responsive center-block" src="<?php echo get_template_directory_uri(); ?>/img/menu-campi-title.png" alt="Campi do IFRS"></h2>
+        <?php
+            if (is_front_page()) {
+                get_template_part('partials/menus/campi');
+            }
+        ?>
+    </div>
+</div>
 
 <?php if (is_active_sidebar('widget-gallery')) : ?>
 <div class="row">
