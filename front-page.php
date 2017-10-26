@@ -20,6 +20,9 @@
                           <?php get_template_part('partials/noticias/item-front-page'); ?>
                     </article>
                 </div>
+            <?php if ($query->post_count == 1) : ?>
+                </div> <!-- /.row -->
+            <?php endif; ?>
         <?php endif; ?>
         <?php if ($query->current_post == 1) : ?>
                 <!-- Notícia Normal -->
