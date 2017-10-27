@@ -8,7 +8,6 @@ var pixrem       = require('pixrem');
 var autoprefixer = require('autoprefixer');
 var flexibility  = require('postcss-flexibility');
 var cssmin       = require('gulp-cssmin');
-var imagemin     = require('gulp-imagemin');
 var runSequence  = require('run-sequence');
 var browserSync  = require('browser-sync').create();
 
@@ -45,14 +44,14 @@ gulp.task('default', function() {
 
 gulp.task('build', ['clean'], function(done) {
     if (gutil.env.production) {
-        runSequence(['css', 'images'], 'dist', done);
+        runSequence(['css'], 'dist', done);
     } else {
         runSequence(['sass'], done);
     }
 });
 
 gulp.task('clean', function() {
-    return del(['css/', 'js/', 'dist/']);
+    return del(['css/', 'dist/']);
 });
 
 gulp.task('sass', function() {
@@ -77,12 +76,6 @@ gulp.task('css', ['sass'], function() {
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
-});
-
-gulp.task('images', function() {
-    return gulp.src('img/*.{png,jpg,gif}')
-    .pipe(imagemin())
-    .pipe(gulp.dest('img/'));
 });
 
 gulp.task('dist', function() {
