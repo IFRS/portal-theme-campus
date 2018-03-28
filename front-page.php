@@ -42,7 +42,7 @@
     <?php endwhile; ?>
 </div>
 
-<hr class="separador-noticia"/>
+<hr class="separador-noticia">
 
 <div class="row">
     <div class="col-xs-12">
@@ -65,9 +65,18 @@
     <div class="col-xs-12">
         <h2><img class="img-responsive center-block" src="<?php echo get_template_directory_uri(); ?>/img/menu-campi-title.png" alt="Campi do IFRS"></h2>
         <?php
-            if (is_front_page()) {
-                get_template_part('partials/menus/campi');
-            }
+            // Imprime o menu dos Campi do blog principal, agradecimento ao Muhammad Abdullah - https://wordpress.stackexchange.com/a/264026
+            global $blog_id;
+            $current_blog_id = $blog_id;
+
+            //switch to the main blog which will have an id of 1
+            switch_to_blog(1);
+
+            //output the WordPress navigation menu - incase of menu-sharing use this
+            get_template_part('partials/menus/campi');
+
+            //switch back to the current blog being viewed - before ending of the function
+            switch_to_blog($current_blog_id);
         ?>
     </div>
 </div>
