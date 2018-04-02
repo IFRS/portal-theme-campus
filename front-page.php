@@ -3,43 +3,31 @@
 <?php
     $args = array(
         'post_type' => 'post',
-        'posts_per_page' => 3
+        'posts_per_page' => 5
     );
 
     $query = new WP_Query($args);
 ?>
 
 <div class="row">
-    <?php while ($query->have_posts() && $query->current_post < 2) : $query->the_post(); ?>
-        <?php if ($query->current_post == 0) : ?>
+    <div class="col-xs-12 col-md-8">
+        <?php while ($query->have_posts() && $query->current_post < 1) : $query->the_post(); ?>
             <!-- Notícia Destaque -->
-            <div class="col-xs-12 col-md-9">
-                <article class="noticia noticia-destaque">
-                        <?php get_template_part('partials/noticias/item-front-page'); ?>
-                </article>
-            </div>
-        <?php endif; ?>
-        <?php if ($query->current_post == 1) : ?>
-            <!-- Notícia Normal -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <article class="noticia noticia-destaque">
+                    <?php get_template_part('partials/noticias/item'); ?>
+            </article>
+        <?php endwhile; ?>
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <div class="noticia-list">
+            <?php while ($query->have_posts() && $query->current_post < 4) : $query->the_post(); ?>
                 <article class="noticia">
-                    <?php get_template_part('partials/noticias/item-front-page'); ?>
+                    <?php get_template_part('partials/noticias/item-list'); ?>
                 </article>
-            </div>
-        <?php endif; ?>
-        <?php if ($query->current_post == 2) : ?>
-            <!-- Banners -->
-            <div class="col-xs-12 col-md-9">
-                <?php if (!dynamic_sidebar('widget-home')) : endif; ?>
-            </div>
-            <!-- Notícia Normal -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <article class="noticia">
-                    <?php get_template_part('partials/noticias/item-front-page'); ?>
-                </article>
-            </div>
-        <?php endif; ?>
-    <?php endwhile; ?>
+            <?php endwhile; ?>
+        </div>
+        <?php if (!dynamic_sidebar('widget-home')) : endif; ?>
+    </div>
 </div>
 
 <hr class="separador-noticia">

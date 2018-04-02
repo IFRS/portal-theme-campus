@@ -8,7 +8,7 @@
     }
 
     .noticia-meta {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
 
     .noticia-resumo {
@@ -26,6 +26,8 @@
 }
 
 .noticia-destaque {
+    margin-bottom: 30px;
+
     .noticia-imagem {
         @media screen and (min-width: $screen-md-min) {
             max-width: 50%;
@@ -37,7 +39,7 @@
     }
 
     .noticia-meta {
-        margin-top: 5px;
+        margin-top: 10px;
     }
 
     .noticia-resumo {
@@ -46,9 +48,15 @@
             text-overflow: ellipsis;
             display: -webkit-box;
             line-height: 21px;     /* fallback */
-            max-height: 63px;      /* fallback */ /* number of lines * line-height */
+            max-height: 84px;      /* fallback */ /* number of lines * line-height */
             -webkit-line-clamp: 4; /* number of lines to show */
             -webkit-box-orient: vertical;
         }
+    }
+}
+
+.noticia-list {
+    .noticia {
+        margin-bottom: 15px;
     }
 }
