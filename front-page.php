@@ -20,13 +20,12 @@
     </div>
     <div class="col-xs-12 col-md-4">
         <div class="noticia-list">
-            <?php while ($query->have_posts() && $query->current_post < 4) : $query->the_post(); ?>
+            <?php while ($query->have_posts() && $query->current_post < 5) : $query->the_post(); ?>
                 <article class="noticia">
                     <?php get_template_part('partials/noticias/item-list'); ?>
                 </article>
             <?php endwhile; ?>
         </div>
-        <?php if (!dynamic_sidebar('widget-home')) : endif; ?>
     </div>
 </div>
 
@@ -36,6 +35,12 @@
     <div class="col-xs-12">
         <?php wp_reset_query(); ?>
         <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="pull-right link-todas-noticias"><?php _e('Acesse mais notícias'); ?></a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+        <?php if (!dynamic_sidebar('widget-home')) : endif; ?>
     </div>
 </div>
 
