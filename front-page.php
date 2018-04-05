@@ -12,7 +12,6 @@
 <div class="row">
     <div class="col-xs-12 col-md-8">
         <?php while ($query->have_posts() && $query->current_post < 1) : $query->the_post(); ?>
-            <!-- Notícia Destaque -->
             <article class="noticia noticia-destaque">
                     <?php get_template_part('partials/noticias/item'); ?>
             </article>
@@ -46,8 +45,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-md-6">
-        <?php get_template_part('partials/editais/latest'); ?>
-        <?php get_template_part('partials/documentos/latest'); ?>
+        <?php if (!dynamic_sidebar('widget-docs')) : endif; ?>
     </div>
     <div class="col-xs-12 col-md-6">
         <?php if (!dynamic_sidebar('widget-home-side')) : endif; ?>
