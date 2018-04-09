@@ -26,13 +26,9 @@
             <?php endwhile; ?>
         </div>
     </div>
-</div>
-
-<hr class="separador-noticia">
-
-<div class="row">
     <div class="col-xs-12">
         <?php wp_reset_query(); ?>
+        <hr class="separador-noticia">
         <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="pull-right link-todas-noticias"><?php _e('Acesse mais notícias'); ?></a>
     </div>
 </div>
