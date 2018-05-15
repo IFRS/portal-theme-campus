@@ -1,5 +1,5 @@
+var argv         = require('minimist')(process.argv.slice(2));
 var gulp         = require('gulp');
-var gutil        = require('gulp-util');
 var del          = require('del');
 var rename       = require('gulp-rename');
 var sass         = require('gulp-sass');
@@ -8,12 +8,11 @@ var pixrem       = require('pixrem');
 var autoprefixer = require('autoprefixer');
 var flexibility  = require('postcss-flexibility');
 var cssmin       = require('gulp-cssmin');
-var runSequence  = require('run-sequence');
 var browserSync  = require('browser-sync').create();
 
 require('dotenv').config();
 
-var dist = [
+const DIST = [
     '**',
     '!.**',
     '!dist{,/**}',
@@ -24,31 +23,6 @@ var dist = [
     '!package.json',
     '!package-lock.json'
 ];
-
-gulp.task('default', function() {
-    browserSync.init({
-        ui: false,
-        notify: false,
-        online: false,
-        open: false,
-        host: process.env.BROWSERSYNC_URL,
-        proxy: process.env.BROWSERSYNC_URL,
-    });
-
-    gulp.watch('sass/**/*.scss', ['sass']);
-
-    gulp.watch('src/**/*.js', ['webpack']);
-
-    gulp.watch('**/*.php').on('change', browserSync.reload);
-});
-
-gulp.task('build', ['clean'], function(done) {
-    if (gutil.env.production) {
-        runSequence(['css'], 'dist', done);
-    } else {
-        runSequence(['sass'], done);
-    }
-});
 
 gulp.task('clean', function() {
     return del(['css/', 'dist/']);
@@ -70,15 +44,32 @@ gulp.task('sass', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('css', ['sass'], function() {
+gulp.task('css', gulp.series('sass', function() {
     return gulp.src(['css/*.css', '!css/*.min.css'])
     .pipe(cssmin())
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
-});
+}));
 
 gulp.task('dist', function() {
-    return gulp.src(dist)
+    return gulp.src(DIST)
     .pipe(gulp.dest('dist/'));
 });
+
+gulp.task('default', function() {
+    browserSync.init({
+        ui: false,
+        notify: false,
+        online: false,
+        open: false,
+        host: argv.URL || 'localhost',
+        proxy: argv.URL || 'localhost',
+    });
+
+    gulp.watch('sass/**/*.scss', gulp.series('sass'));
+
+    gulp.watch('**/*.php').on('change', browserSync.reload);
+});
+
+gulp.task('build', gulp.series('clean', (argv.production) ? gulp.series('css', 'dist') : gulp.series('sass')));

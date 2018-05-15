@@ -2,19 +2,19 @@
   "name": "ifrs-campi-theme",
   "private": true,
   "devDependencies": {
-    "autoprefixer": "^6.7.6",
+    "autoprefixer": "^8.5.0",
     "bootstrap-sass": "^3.3.7",
-    "browser-sync": "^2.23.6",
-    "del": "^2.2.2",
-    "dotenv": "^4.0.0",
+    "browser-sync": "^2.24.4",
+    "del": "^3.0.0",
+    "dotenv": "^5.0.1",
     "flexibility": "^2.0.1",
-    "gulp": "^3.9.1",
-    "gulp-cssmin": "^0.1.7",
-    "gulp-postcss": "^6.3.0",
+    "gulp": "^4.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.2.1",
+    "gulp-sass": "^4.0.1",
+    "minimist": "^1.2.0",
     "pixrem": "^4.0.1",
-    "postcss-flexibility": "^2.0.0",
-    "run-sequence": "^2.2.1"
+    "postcss-flexibility": "^2.0.0"
   }
 }
