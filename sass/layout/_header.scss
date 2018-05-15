@@ -14,6 +14,10 @@ header {
         color: #FFFFFF;
         font-size: 12px;
         margin-bottom: 0;
+
+        @media screen and (min-width: $screen-lg-min) {
+            margin-top: 15px;
+        }
     }
 
     .title-campus {
