@@ -15,7 +15,7 @@ header {
         font-size: 12px;
         margin-bottom: 0;
 
-        @media screen and (min-width: $screen-lg-min) {
+        @media screen and (min-width: $screen-sm-min) {
             margin-top: 15px;
         }
     }
