@@ -1,16 +1,14 @@
-var argv         = require('minimist')(process.argv.slice(2));
-var gulp         = require('gulp');
-var del          = require('del');
-var rename       = require('gulp-rename');
-var sass         = require('gulp-sass');
-var postcss      = require('gulp-postcss');
-var pixrem       = require('pixrem');
-var autoprefixer = require('autoprefixer');
-var flexibility  = require('postcss-flexibility');
-var cssmin       = require('gulp-cssmin');
-var browserSync  = require('browser-sync').create();
-
-require('dotenv').config();
+const argv         = require('minimist')(process.argv.slice(2));
+const gulp         = require('gulp');
+const del          = require('del');
+const rename       = require('gulp-rename');
+const sass         = require('gulp-sass');
+const postcss      = require('gulp-postcss');
+const pixrem       = require('pixrem');
+const autoprefixer = require('autoprefixer');
+const flexibility  = require('postcss-flexibility');
+const cssmin       = require('gulp-cssmin');
+const browserSync  = require('browser-sync').create();
 
 const DIST = [
     '**',
@@ -44,7 +42,7 @@ gulp.task('sass', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('css', gulp.series('sass', function() {
+gulp.task('styles', gulp.series('sass', function css() {
     return gulp.src(['css/*.css', '!css/*.min.css'])
     .pipe(cssmin())
     .pipe(rename({suffix: '.min'}))
@@ -72,4 +70,8 @@ gulp.task('default', function() {
     gulp.watch('**/*.php').on('change', browserSync.reload);
 });
 
-gulp.task('build', gulp.series('clean', (argv.production) ? gulp.series('css', 'dist') : gulp.series('sass')));
+if (argv.production) {
+    gulp.task('build', gulp.series('clean', 'styles', 'dist'));
+} else {
+    gulp.task('build', gulp.series('clean', 'sass'));
+}
