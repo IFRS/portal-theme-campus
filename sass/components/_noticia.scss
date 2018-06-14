@@ -10,19 +10,6 @@
     .noticia-meta {
         margin-bottom: 10px;
     }
-
-    .noticia-resumo {
-        p {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
-            display: -webkit-box;
-            line-height: 21px;     /* fallback */
-            max-height: 42px;      /* fallback */
-            -webkit-line-clamp: 2; /* number of lines to show */
-            -webkit-box-orient: vertical;
-        }
-    }
 }
 
 .noticia-destaque {
@@ -40,18 +27,6 @@
 
     .noticia-meta {
         margin-top: 10px;
-    }
-
-    .noticia-resumo {
-        p {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            line-height: 21px;     /* fallback */
-            max-height: 84px;      /* fallback */ /* number of lines * line-height */
-            -webkit-line-clamp: 4; /* number of lines to show */
-            -webkit-box-orient: vertical;
-        }
     }
 }
 
