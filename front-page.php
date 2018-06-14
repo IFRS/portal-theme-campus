@@ -19,7 +19,7 @@
     </div>
     <div class="col-xs-12 col-md-4">
         <div class="noticia-list">
-            <?php while ($query->have_posts() && $query->current_post < 5) : $query->the_post(); ?>
+            <?php while ($query->have_posts() && $query->current_post < 4) : $query->the_post(); ?>
                 <article class="noticia">
                     <?php get_template_part('partials/noticias/item-list'); ?>
                 </article>
