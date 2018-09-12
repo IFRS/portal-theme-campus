@@ -2,7 +2,7 @@
     background-color: $cor-primaria-cinza;
     border: 1px solid darken($cor-primaria-cinza, 10%);
 
-    @media screen and (min-width: $screen-md-min) {
+    @include media-breakpoint-up(lg) {
         &:after {
             content: none;
             border: none;
@@ -11,7 +11,7 @@
         }
     }
 
-    @media screen and (max-width: $screen-md-min) {
+    @include media-breakpoint-down(lg) {
         margin-top: 0;
     }
 }
