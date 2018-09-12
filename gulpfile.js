@@ -74,7 +74,7 @@ if (argv.production) {
     gulp.task('build', gulp.series('clean', 'sass'));
 }
 
-gulp.task('default', function() {
+gulp.task('default', gulp.series('build', function watch() {
     browserSync.init({
         ghostMode: false,
         notify: false,
@@ -87,4 +87,4 @@ gulp.task('default', function() {
     gulp.watch('sass/**/*.scss', gulp.series('sass'));
 
     gulp.watch('**/*.php').on('change', browserSync.reload);
-});
+}));
