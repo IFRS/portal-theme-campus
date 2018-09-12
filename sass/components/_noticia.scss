@@ -1,37 +1,33 @@
 .noticia {
-    .noticia-imagem {
+    $n: &;
+
+    &__img {
         margin-bottom: 5px;
     }
 
-    .noticia-titulo {
+    &__titulo {
         margin-bottom: 5px;
     }
 
-    .noticia-meta {
+    &__meta {
         margin-bottom: 10px;
     }
-}
 
-.noticia-destaque {
-    margin-bottom: 30px;
+    &_destaque {
+        margin-bottom: 30px;
 
-    .noticia-imagem {
-        @media screen and (min-width: $screen-md-min) {
-            max-width: 50%;
+        #{$n}__img {
+            @include media-breakpoint-up(lg) {
+                max-width: 50%;
+            }
         }
-    }
 
-    .noticia-titulo {
-        margin-bottom: 5px;
-    }
+        #{$n}__titulo {
+            margin-bottom: 5px;
+        }
 
-    .noticia-meta {
-        margin-top: 10px;
-    }
-}
-
-.noticia-list {
-    .noticia {
-        margin-bottom: 15px;
+        #{$n}__meta {
+            margin-top: 10px;
+        }
     }
 }

@@ -1,4 +1,4 @@
-header {
+.header {
     background-color: $cor-primaria-verde;
     @include gradient-x($cor-header-inicio, $cor-header-fim);
 
