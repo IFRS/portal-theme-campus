@@ -38,6 +38,7 @@
 <div class="row">
     <div class="col-12 col-xl-10 offset-xl-1">
         <?php if (!dynamic_sidebar('widget-home')) : endif; ?>
+        <?php get_template_part('partials/carousel'); ?>
     </div>
 </div>
 
