@@ -13,7 +13,7 @@
     <div class="col-12 col-lg-8">
         <?php while ($query->have_posts() && $query->current_post < 1) : $query->the_post(); ?>
             <article class="noticia noticia_destaque">
-                    <?php get_template_part('partials/noticias/item'); ?>
+                <?php get_template_part('partials/noticias/item'); ?>
             </article>
         <?php endwhile; ?>
     </div>
