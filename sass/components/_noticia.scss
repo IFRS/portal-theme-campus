@@ -16,12 +16,6 @@
     &_destaque {
         margin-bottom: 30px;
 
-        #{$n}__img {
-            @include media-breakpoint-up(lg) {
-                max-width: 50%;
-            }
-        }
-
         #{$n}__titulo {
             margin-bottom: 5px;
         }
