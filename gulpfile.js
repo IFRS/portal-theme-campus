@@ -11,10 +11,6 @@ const browserSync  = require('browser-sync').create();
 
 const proxyURL = argv.URL || argv.url || 'localhost';
 
-const dist = [
-
-];
-
 gulp.task('clean', function() {
     return del(['css/', 'dist/']);
 });
