@@ -42,14 +42,48 @@
     </div>
 </div>
 
+<?php if (is_active_sidebar('widget-docs')) : ?>
 <div class="row">
-    <div class="col-12 col-lg-6">
-        <?php if (!dynamic_sidebar('widget-docs')) : endif; ?>
-    </div>
-    <div class="col-12 col-lg-6">
-        <?php if (!dynamic_sidebar('widget-home-side')) : endif; ?>
+    <div class="col-12">
+        <div class="area-docs">
+            <?php dynamic_sidebar('widget-docs'); ?>
+        </div>
     </div>
 </div>
+<?php endif; ?>
+
+
+<div class="row">
+<?php if (is_active_sidebar('widget-gallery')) : ?>
+    <div class="col">
+        <div class="area-gallery">
+            <?php dynamic_sidebar('widget-gallery'); ?>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if (is_active_sidebar('widget-home-side')) : ?>
+    <div class="col-12 col-lg-4">
+        <div class="area-home-side">
+            <?php dynamic_sidebar('widget-home-side'); ?>
+        </div>
+    </div>
+<?php endif; ?>
+</div>
+
+<?php if (is_active_sidebar('widget-atalhos')) : ?>
+<div class="row">
+    <div class="col-12">
+        <div class="area-atalhos">
+            <h2 class="area-atalhos__title"><?php _e('Acesso R&aacute;pido'); ?></h2>
+            <nav>
+                <ul class="area-atalhos__list">
+                    <?php dynamic_sidebar('widget-atalhos'); ?>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 
 <div class="row">
     <div class="col-12">
@@ -71,34 +105,15 @@
     </div>
 </div>
 
-<?php if (is_active_sidebar('widget-gallery')) : ?>
-<div class="row">
-    <div class="col-12">
-        <?php if (!dynamic_sidebar('widget-gallery')) : endif; ?>
-    </div>
-</div>
-<?php endif; ?>
-
-<?php if (is_active_sidebar('widget-atalhos')) : ?>
-<div class="row">
-    <div class="col-12">
-        <h2 class="title-box"><?php _e('Acesso R&aacute;pido'); ?></h2>
-        <nav>
-            <ul class="area-atalhos">
-                <?php if (!dynamic_sidebar('widget-atalhos')) : endif; ?>
-            </ul>
-        </nav>
-    </div>
-</div>
-<?php endif; ?>
-
+<?php if (is_active_sidebar('widget-banners')) : ?>
 <div class="row">
     <div class="col-12">
         <div class="area-banners">
             <hr class="area-banners__separator">
-            <?php if (!dynamic_sidebar('widget-banners')) : endif; ?>
+            <?php dynamic_sidebar('widget-banners'); ?>
         </div>
     </div>
 </div>
+<?php endif; ?>
 
 <?php get_footer(); ?>
