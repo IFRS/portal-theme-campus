@@ -36,10 +36,16 @@
 </div>
 
 <div class="row">
-    <div class="col-12 col-xl-10 offset-xl-1">
-        <?php if (!dynamic_sidebar('widget-home')) : endif; ?>
+<?php if (is_active_sidebar('widget-home')) : ?>
+    <div class="col text-center">
+        <?php dynamic_sidebar('widget-home'); ?>
+    </div>
+<?php endif; ?>
+<?php if (is_active_sidebar('widget-carousel')) : ?>
+    <div class="col text-center">
         <?php get_template_part('partials/carousel'); ?>
     </div>
+<?php endif; ?>
 </div>
 
 <?php if (is_active_sidebar('widget-docs')) : ?>
@@ -62,7 +68,7 @@
     </div>
 <?php endif; ?>
 <?php if (is_active_sidebar('widget-home-side')) : ?>
-    <div class="col-12 col-lg-4">
+    <div class="col text-center">
         <div class="area-home-side">
             <?php dynamic_sidebar('widget-home-side'); ?>
         </div>
