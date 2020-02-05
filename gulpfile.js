@@ -41,7 +41,7 @@ gulp.task('styles', gulp.series('sass', function css() {
 }));
 
 gulp.task('dist', function() {
-    return gulp.src(
+    return gulp.src([
         '**',
         '!.**',
         '!dist{,/**}',
@@ -51,7 +51,7 @@ gulp.task('dist', function() {
         '!gulpfile.js',
         '!package.json',
         '!package-lock.json'
-    )
+    ])
     .pipe(gulp.dest('dist/'));
 });
 
