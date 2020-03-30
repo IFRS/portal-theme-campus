@@ -1,31 +1,81 @@
 <?php get_header(); ?>
 
 <?php
+    $escopos = get_terms(array(
+        'taxonomy' => 'escopo',
+        'hide_empty' => false,
+        'fields' => 'ids'
+    ));
+
     $args = array(
         'post_type' => 'post',
-        'posts_per_page' => 5
+        'posts_per_page' => 8,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'escopo',
+                'field' => 'term_id',
+                'terms' => $escopos,
+                'operator' => 'NOT IN'
+            )
+        )
     );
 
     $query = new WP_Query($args);
 ?>
 
 <div class="row">
-    <div class="col-12 col-lg-8">
-        <?php while ($query->have_posts() && $query->current_post < 1) : $query->the_post(); ?>
-            <article class="noticia noticia_destaque">
-                <?php get_template_part('partials/noticias/item'); ?>
-            </article>
-        <?php endwhile; ?>
-    </div>
-    <div class="col-12 col-lg-4">
-        <div class="noticia-list">
-            <?php while ($query->have_posts() && $query->current_post < 4) : $query->the_post(); ?>
-                <article class="noticia">
-                    <?php get_template_part('partials/noticias/item-list'); ?>
-                </article>
-            <?php endwhile; ?>
-        </div>
-    </div>
+    <?php while ($query->have_posts()) : $query->the_post(); ?>
+        <?php switch ($query->current_post) :
+            case 0: ?>
+                <div class="col-12 col-lg-8">
+                    <article class="noticia noticia_destaque">
+                        <?php get_template_part('partials/noticias/item'); ?>
+                    </article>
+            <?php break; ?>
+            <?php case 1: ?>
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <article class="noticia">
+                                <?php get_template_part('partials/noticias/item'); ?>
+                            </article>
+                        </div>
+            <?php break; ?>
+            <?php case 2: ?>
+                        <div class="col-12 col-lg-6">
+                            <article class="noticia">
+                                <?php get_template_part('partials/noticias/item'); ?>
+                            </article>
+                        </div>
+                    </div> <!-- /.row -->
+                </div> <!-- /.col-12 .col-lg-8 -->
+            <?php break; ?>
+            <?php case 3: ?>
+                <div class="col-12 col-lg-4">
+                    <article class="noticia">
+                        <?php get_template_part('partials/noticias/item-list'); ?>
+                    </article>
+            <?php break; ?>
+            <?php case 4: ?>
+                    <article class="noticia">
+                        <?php get_template_part('partials/noticias/item-list'); ?>
+                    </article>
+            <?php break; ?>
+            <?php case 5: ?>
+                    <div class="noticias-simples mt-3">
+                        <article class="noticia noticia_simples">
+                            <?php get_template_part('partials/noticias/item-simple'); ?>
+                        </article>
+            <?php break; ?>
+            <?php case 6: ?>
+                        <article class="noticia noticia_simples">
+                            <?php get_template_part('partials/noticias/item-simple'); ?>
+                        </article>
+                    </div> <!-- /.noticias-simples -->
+                </div> <!-- /.col-12 .col-lg-4 -->
+            <?php break; ?>
+            <?php default: ?>
+        <?php endswitch; ?>
+    <?php endwhile; ?>
     <div class="col-12">
         <?php wp_reset_query(); ?>
         <div class="acesso-todas-noticias">
