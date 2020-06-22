@@ -2,8 +2,8 @@
   "name": "ifrs-portal-theme-campus",
   "private": true,
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
-    "bootstrap": "^4.4.1",
+    "autoprefixer": "^9.8.2",
+    "bootstrap": "^4.5.0",
     "browser-sync": "^2.26.7",
     "del": "^5.1.0",
     "flexibility": "^2.0.1",
