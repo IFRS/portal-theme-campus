@@ -3,7 +3,7 @@ add_action( 'wp_enqueue_scripts', function() {
     /* wp_register_style( $handle, $src, $deps, $ver, $media ); */
     /* wp_enqueue_style( $handle[, $src, $deps, $ver, $media] ); */
 
-    wp_enqueue_style('css-campi', get_stylesheet_directory_uri().(WP_DEBUG ? '/css/campi.css' : '/css/campi.min.css'), array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/css/campi.min.css'), 'all');
+    wp_enqueue_style('css-campi', get_stylesheet_directory_uri(). '/css/campi.css', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/css/campi.css'), 'all');
 }, 2 );
 
 add_action( 'wp_enqueue_scripts', function() {

@@ -1,18 +1,18 @@
 const argv         = require('minimist')(process.argv.slice(2));
-const gulp         = require('gulp');
-const del          = require('del');
-const rename       = require('gulp-rename');
-const sass         = require('gulp-sass');
-const postcss      = require('gulp-postcss');
-const pixrem       = require('pixrem');
 const autoprefixer = require('autoprefixer');
-const cssmin       = require('gulp-cssmin');
 const browserSync  = require('browser-sync').create();
+const csso         = require('gulp-csso');
+const del          = require('del');
+const gulp         = require('gulp');
+const pixrem       = require('pixrem');
+const postcss      = require('gulp-postcss');
+const sass         = require('gulp-sass');
+const sourcemaps   = require('gulp-sourcemaps');
 
 const proxyURL = argv.URL || argv.url || 'localhost';
 
-gulp.task('clean', function() {
-    return del(['css/', 'dist/']);
+gulp.task('clean', async function() {
+    return await del(['css/', 'dist/']);
 });
 
 gulp.task('sass', function() {
@@ -22,20 +22,21 @@ gulp.task('sass', function() {
         autoprefixer()
     ];
     return gulp.src('sass/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass({
-        includePaths: 'sass',
+        includePaths: ['sass', 'node_modules'],
         outputStyle: 'expanded',
-        precision: 8
+        precision: 6
     }).on('error', sass.logError))
     .pipe(postcss(postCSSplugins))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('styles', gulp.series('sass', function css() {
-    return gulp.src(['css/*.css', '!css/*.min.css'])
-    .pipe(cssmin())
-    .pipe(rename({suffix: '.min'}))
+    return gulp.src(['css/*.css'])
+    .pipe(csso())
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
 }));
