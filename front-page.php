@@ -87,7 +87,7 @@
 
 <div class="row">
 <?php if (is_active_sidebar('widget-home')) : ?>
-    <div class="col text-center">
+    <div class="text-center col-12<?php echo is_active_sidebar('widget-carousel') ? ' col-md-6' : ''; ?>">
         <?php dynamic_sidebar('widget-home'); ?>
     </div>
 <?php endif; ?>
