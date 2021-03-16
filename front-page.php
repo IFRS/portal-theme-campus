@@ -85,11 +85,9 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row align-items-center">
 <?php if (is_active_sidebar('widget-home')) : ?>
-    <div class="text-center col-12<?php echo is_active_sidebar('widget-carousel') ? ' col-md-6' : ''; ?>">
-        <?php dynamic_sidebar('widget-home'); ?>
-    </div>
+    <?php dynamic_sidebar('widget-home'); ?>
 <?php endif; ?>
 <?php if (is_active_sidebar('widget-carousel')) : ?>
     <div class="col text-center">
