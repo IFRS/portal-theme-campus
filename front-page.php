@@ -144,16 +144,12 @@
         <h2 class="text-center"><img class="img-fluid mx-auto" src="<?php echo get_template_directory_uri(); ?>/img/menu-campi-title.png" alt="Campi do IFRS"></h2>
         <?php
             // Imprime o menu dos Campi do blog principal, agradecimento ao Muhammad Abdullah - https://wordpress.stackexchange.com/a/264026
-            global $blog_id;
-            $current_blog_id = $blog_id;
+            $current_blog_id = get_current_blog_id();
 
-            //switch to the main blog which will have an id of 1
-            switch_to_blog(1);
+            switch_to_blog(get_main_site_id());
 
-            //output the WordPress navigation menu - incase of menu-sharing use this
             get_template_part('partials/menus/campi');
 
-            //switch back to the current blog being viewed - before ending of the function
             switch_to_blog($current_blog_id);
         ?>
     </div>
