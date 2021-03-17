@@ -85,16 +85,13 @@
     </div>
 </div>
 
-<div class="row align-items-center">
 <?php if (is_active_sidebar('widget-home')) : ?>
-    <?php dynamic_sidebar('widget-home'); ?>
-<?php endif; ?>
-<?php if (is_active_sidebar('widget-carousel')) : ?>
-    <div class="col text-center">
-        <?php get_template_part('partials/carousel'); ?>
+<div class="area-home">
+    <div class="row align-items-center">
+        <?php dynamic_sidebar('widget-home'); ?>
     </div>
-<?php endif; ?>
 </div>
+<?php endif; ?>
 
 <?php if (is_active_sidebar('widget-docs')) : ?>
 <div class="row">
@@ -106,23 +103,24 @@
 </div>
 <?php endif; ?>
 
-
+<?php if (is_active_sidebar('widget-gallery') || is_active_sidebar('widget-home-side')) : ?>
 <div class="row">
-<?php if (is_active_sidebar('widget-gallery')) : ?>
+    <?php if (is_active_sidebar('widget-gallery')) : ?>
     <div class="col">
         <div class="area-gallery">
             <?php dynamic_sidebar('widget-gallery'); ?>
         </div>
     </div>
-<?php endif; ?>
-<?php if (is_active_sidebar('widget-home-side')) : ?>
+    <?php endif; ?>
+    <?php if (is_active_sidebar('widget-home-side')) : ?>
     <div class="col text-center">
         <div class="area-home-side">
             <?php dynamic_sidebar('widget-home-side'); ?>
         </div>
     </div>
-<?php endif; ?>
+    <?php endif; ?>
 </div>
+<?php endif; ?>
 
 <?php if (is_active_sidebar('widget-atalhos')) : ?>
 <div class="row">
