@@ -87,7 +87,7 @@
 
 <?php if (is_active_sidebar('widget-home')) : ?>
 <div class="area-home">
-    <div class="row align-items-center">
+    <div class="row align-items-center justify-content-around">
         <?php dynamic_sidebar('widget-home'); ?>
     </div>
 </div>
