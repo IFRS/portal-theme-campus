@@ -2,7 +2,7 @@
     border: 1px solid darken($cor-primaria-cinza, 10%);
 
     @include media-breakpoint-up(lg) {
-        &:after {
+        &::before {
             content: none;
             border: none;
             display: inherit;
