@@ -10,28 +10,33 @@
         }
     }
 
-    .title-ifrs {
-        color: #FFFFFF;
-        font-size: 12px;
-        margin-bottom: 0;
+    .title-link {
+        display: block;
+        text-decoration: none;
 
-        @include media-breakpoint-up(md) {
-            margin-top: 15px;
-        }
-    }
-
-    .title-campus {
-        color: #FFFFFF;
-        font-size: 40px;
-        font-weight: bolder;
-        margin-bottom: 0;
-
-        a {
+        &:hover {
             text-decoration: none;
         }
     }
 
-    .title-mec {
-        color: #FFFFFF;
+    .title-img {
+        float: left;
+        margin-right: 20px;
+
+        @include media-breakpoint-down(sm) {
+            display: none;
+        }
+    }
+
+    .title-campus {
+        color: #ffffff;
+        font-weight: bold;
+        margin-bottom: 0;
+
+        small {
+            color: #ffffff;
+            display: inline-block;
+            font-size: 0.8rem;
+        }
     }
 }
