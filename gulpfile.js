@@ -6,7 +6,7 @@ const del          = require('del');
 const gulp         = require('gulp');
 const pixrem       = require('pixrem');
 const postcss      = require('gulp-postcss');
-const sass         = require('gulp-sass');
+const sass         = require('gulp-sass')(require('sass'));
 const sourcemaps   = require('gulp-sourcemaps');
 
 const proxyURL = argv.URL || argv.url || 'localhost';
