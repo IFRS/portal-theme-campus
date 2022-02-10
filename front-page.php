@@ -11,7 +11,7 @@
 
     $args = array(
         'post_type' => 'post',
-        'posts_per_page' => 8,
+        'posts_per_page' => 7,
         'tax_query' => array(
             array(
                 'taxonomy' => 'escopo',
@@ -25,61 +25,35 @@
     $query = new WP_Query($args);
 ?>
 
+<?php if ($query->have_posts()) : $query->the_post(); ?>
+    <!-- Notícia Destaque -->
+    <div class="row">
+        <div class="col-12">
+            <article class="noticia noticia_destaque">
+                <?php get_template_part('partials/noticias/item'); ?>
+            </article>
+        </div>
+    </div>
+<?php endif; ?>
+
 <div class="row">
     <?php while ($query->have_posts()) : $query->the_post(); ?>
-        <?php switch ($query->current_post) :
-            case 0: ?>
-                <div class="col-12 col-lg-8">
-                    <article class="noticia noticia_destaque">
-                        <?php get_template_part('partials/noticias/item'); ?>
-                    </article>
-            <?php break; ?>
-            <?php case 1: ?>
-                    <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <article class="noticia">
-                                <?php get_template_part('partials/noticias/item'); ?>
-                            </article>
-                        </div>
-            <?php break; ?>
-            <?php case 2: ?>
-                        <div class="col-12 col-lg-6">
-                            <article class="noticia">
-                                <?php get_template_part('partials/noticias/item'); ?>
-                            </article>
-                        </div>
-                    </div> <!-- /.row -->
-                </div> <!-- /.col-12 .col-lg-8 -->
-            <?php break; ?>
-            <?php case 3: ?>
-                <div class="col-12 col-lg-4">
-                    <article class="noticia">
-                        <?php get_template_part('partials/noticias/item-list'); ?>
-                    </article>
-            <?php break; ?>
-            <?php case 4: ?>
-                    <article class="noticia">
-                        <?php get_template_part('partials/noticias/item-list'); ?>
-                    </article>
-            <?php break; ?>
-            <?php case 5: ?>
-                    <div class="noticias-simples mt-3">
-                        <article class="noticia noticia_simples">
-                            <?php get_template_part('partials/noticias/item-simple'); ?>
-                        </article>
-            <?php break; ?>
-            <?php case 6: ?>
-                        <article class="noticia noticia_simples">
-                            <?php get_template_part('partials/noticias/item-simple'); ?>
-                        </article>
-                    </div> <!-- /.noticias-simples -->
-                </div> <!-- /.col-12 .col-lg-4 -->
-            <?php break; ?>
-            <?php default: ?>
-        <?php endswitch; ?>
+        <?php if ($query->current_post > 6) break; ?>
+        <?php
+            $noticia_class = 'noticia col-12 col-md-6 col-lg-4';
+
+            if ($query->current_post === 4) {
+                $noticia_class .= ' d-none d-md-block d-lg-block';
+            } elseif ($query->current_post >= 5 ) {
+                $noticia_class .= ' d-none d-lg-block';
+            }
+        ?>
+        <article class="<?php echo $noticia_class; ?>">
+            <?php get_template_part('partials/noticias/item'); ?>
+        </article>
     <?php endwhile; ?>
+    <?php wp_reset_query(); ?>
     <div class="col-12">
-        <?php wp_reset_query(); ?>
         <div class="acesso-todas-noticias">
             <hr class="acesso-todas-noticias__separador">
             <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="float-right acesso-todas-noticias__link"><?php _e('Acesse mais notícias'); ?></a>
