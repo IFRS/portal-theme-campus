@@ -36,6 +36,8 @@
     </div>
 <?php endif; ?>
 
+<hr>
+
 <div class="row">
     <?php while ($query->have_posts()) : $query->the_post(); ?>
         <?php if ($query->current_post > 6) break; ?>
