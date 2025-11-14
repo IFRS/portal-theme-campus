@@ -1,6 +1,10 @@
 <?php get_header(); ?>
 
-<?php get_template_part('partials/banner-especial'); ?>
+<div class="row">
+    <div class="col-12">
+        <?php get_template_part('partials/banner-especial'); ?>
+    </div>
+</div>
 
 <?php
     $escopos = get_terms(array(
